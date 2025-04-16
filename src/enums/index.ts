@@ -139,6 +139,11 @@ export const products: Product[] = [
     image: "/products/humanCustom/phoneCase.webp",
   },
   {
+    name: "Phone Case 2",
+    url: "/products/humanCustom/phoneCase2.csv",
+    image: "/products/humanCustom/phoneCase2.webp",
+  },
+  {
     name: "Pillow",
     url: "/products/humanCustom/pillow.csv",
     image: "/products/humanCustom/pillow.webp",
