@@ -154,6 +154,11 @@ export const products: Product[] = [
     image: "/products/humanCustom/shirt1.webp",
   },
   {
+    name: "Shirt 2",
+    url: "/products/humanCustom/shirt2.csv",
+    image: "/products/humanCustom/shirt2.webp",
+  },
+  {
     name: "Sweater",
     url: "/products/humanCustom/sweater.csv",
     image: "/products/humanCustom/sweater.webp",
