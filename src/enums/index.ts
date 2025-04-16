@@ -149,9 +149,9 @@ export const products: Product[] = [
     image: "/products/humanCustom/poster.webp",
   },
   {
-    name: "Shirt",
-    url: "/products/humanCustom/shirt.csv",
-    image: "/products/humanCustom/shirt.webp",
+    name: "Shirt 1",
+    url: "/products/humanCustom/shirt1.csv",
+    image: "/products/humanCustom/shirt1.webp",
   },
   {
     name: "Sweater",
