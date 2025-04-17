@@ -159,6 +159,48 @@ const onChangeSkuId = (originData: any[]): any[] => {
   }
 };
 
+const onDuplicate = (index: number) => {
+  // dùng JSON.parse(JSON.stringify giúp tránh việc tham chiếu cùng 1 bộ nhớ gây sửa hàng loạt
+  if (selectedProducts.value[index].Type === "variable") {
+    const newProducts: any[] = [
+      JSON.parse(JSON.stringify(selectedProducts.value[index])),
+    ];
+    let i = index + 1;
+    while (
+      selectedProducts.value[i] &&
+      selectedProducts.value[i].Type === "variation"
+    ) {
+      newProducts.push(JSON.parse(JSON.stringify(selectedProducts.value[i])));
+      i++;
+    }
+    selectedProducts.value.splice(index, 0, ...newProducts);
+  } else {
+    selectedProducts.value.splice(
+      index,
+      0,
+      JSON.parse(JSON.stringify(selectedProducts.value[index])),
+    );
+  }
+
+  selectedProducts.value = onChangeSkuId(selectedProducts.value);
+};
+
+const onDelete = (index: number) => {
+  if (selectedProducts.value[index].Type === "variable") {
+    let i = index + 1;
+    while (
+      selectedProducts.value[i] &&
+      selectedProducts.value[i].Type === "variation"
+    ) {
+      i++;
+    }
+    selectedProducts.value.splice(index, i);
+  } else {
+    selectedProducts.value.splice(index, 1);
+  }
+  selectedProducts.value = onChangeSkuId(selectedProducts.value);
+};
+
 const handleSubmit = () => {
   refFormExport.value?.validate().then(async ({ valid }) => {
     if (valid) {
@@ -239,6 +281,20 @@ watch(
       @cancel="handleDrawerModelValueUpdate(false)"
     >
       <template #beforeClose>
+        <VBtn
+          color="pink"
+          class="me-4"
+          :loading="loading"
+          size="small"
+          variant="outlined"
+          readonly
+        >
+          {{
+            selectedProducts.filter((item) => item.Type !== "variation").length
+          }}
+          Product Selected
+        </VBtn>
+
         <VBtn
           color="teal"
           class="me-4"
@@ -346,31 +402,78 @@ watch(
                 <VTable>
                   <thead class="bg-secondary">
                     <tr>
+                      <td style="width: 50px">ID</td>
                       <td style="width: 100px">Type</td>
                       <td>Name</td>
-                      <td style="width: 100px">Price</td>
+                      <td style="width: 150px">Price</td>
+                      <td style="width: 120px">Action</td>
                     </tr>
                   </thead>
 
                   <tbody>
-                    <tr
-                      v-for="p in selectedProducts"
-                      :class="
-                        p.Type === 'simple' || p.Type === 'variable'
-                          ? 'bg-grey-400'
-                          : undefined
-                      "
-                    >
-                      <td>
-                        {{ p.Type }}
-                      </td>
-                      <td>
-                        {{ p.Name }}
-                      </td>
-                      <td>
-                        {{ p["Regular price"] }}
-                      </td>
-                    </tr>
+                    <VSlideYTransition class="py-0 w-100" group>
+                      <tr
+                        v-for="(p, index) in selectedProducts"
+                        :key="index"
+                        :class="
+                          p.Type === 'simple' || p.Type === 'variable'
+                            ? undefined
+                            : 'bg-grey-200'
+                        "
+                      >
+                        <td>
+                          {{ p.ID }}
+                        </td>
+                        <td>
+                          {{ p.Type }}
+                        </td>
+                        <td>
+                          <VTextarea
+                            v-if="p.Type !== 'variation'"
+                            v-model="selectedProducts[index].Name"
+                            density="compact"
+                            :rules="[requiredValidator]"
+                            class="py-3"
+                          ></VTextarea>
+                        </td>
+                        <td>
+                          <VTextField
+                            v-if="p.Type !== 'variable'"
+                            v-model="selectedProducts[index]['Regular price']"
+                            density="compact"
+                            :rules="[requiredValidator]"
+                            type="number"
+                          ></VTextField>
+                        </td>
+                        <td>
+                          <VTooltip
+                            text="Duplicate"
+                            v-if="p.Type !== 'variation'"
+                          >
+                            <template #activator="{ props }">
+                              <VBtn
+                                @click="onDuplicate(index)"
+                                v-bind="props"
+                                icon="ri-file-copy-line"
+                                variant="text"
+                              ></VBtn>
+                            </template>
+                          </VTooltip>
+
+                          <VTooltip text="Delete" v-if="p.Type !== 'variation'">
+                            <template #activator="{ props }">
+                              <VBtn
+                                @click="onDelete(index)"
+                                v-bind="props"
+                                icon="ri-delete-bin-7-line"
+                                color="error"
+                                variant="text"
+                              ></VBtn>
+                            </template>
+                          </VTooltip>
+                        </td>
+                      </tr>
+                    </VSlideYTransition>
                   </tbody>
                 </VTable>
               </VCol>

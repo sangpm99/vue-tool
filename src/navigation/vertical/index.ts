@@ -6,16 +6,7 @@ export default [
   },
   {
     title: "Product",
+    to: { name: "product" },
     icon: { icon: "ri-file-text-line" },
-    children: [
-      {
-        title: "Product",
-        to: { name: "product" },
-      },
-      {
-        title: "Change ID/SKU",
-        to: { name: "product-change-id-sku" },
-      },
-    ],
   },
 ];
