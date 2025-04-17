@@ -10,6 +10,7 @@ import { type Product, booleanOptions } from "@/enums";
 interface Props {
   isDrawerOpen: boolean;
   product?: Product;
+  csvData: any[];
 }
 interface Emit {
   (e: "update:isDrawerOpen", value: boolean): void;
@@ -50,32 +51,33 @@ const handleDrawerModelValueUpdate = (val: boolean) => {
 };
 
 const loadCSV = async () => {
-  if (!props.product) return;
-  const csvUrl = props.product.url;
+  if (props.product) {
+    const csvUrl = props.product.url;
 
-  Papa.parse(csvUrl, {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: async (results) => {
-      csvData.value = await onChangeSkuId(results.data);
+    Papa.parse(csvUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: async (results) => {
+        csvData.value = await onChangeSkuId(results.data);
 
-      csvData.value.forEach((item: any) => {
-        if (item.Type === "simple" || item.Type === "variable") {
-          item["Categories"] = props.product?.name || "";
-        }
-      });
+        csvData.value.forEach((item: any) => {
+          if (item.Type === "simple" || item.Type === "variable") {
+            item["Categories"] = props.product?.name || "";
+          }
+        });
 
-      productCount.value = csvData.value.filter(
-        (item) => item.Type === "simple" || item.Type === "variable",
-      ).length;
-    },
-    error: (error) => {
-      message.value = `Error parsing CSV: ${error}`;
-      isSnackbarVisible.value = true;
-      messageType.value = "error";
-    },
-  });
+        productCount.value = csvData.value.filter(
+          (item) => item.Type === "simple" || item.Type === "variable",
+        ).length;
+      },
+      error: (error) => {
+        message.value = `Error parsing CSV: ${error}`;
+        isSnackbarVisible.value = true;
+        messageType.value = "error";
+      },
+    });
+  }
 };
 
 const onPreview = () => {
@@ -186,6 +188,29 @@ const handleSubmit = () => {
     }
   });
 };
+
+watch(
+  () => props.csvData,
+  async () => {
+    try {
+      csvData.value = await onChangeSkuId(props.csvData);
+
+      csvData.value.forEach((item: any) => {
+        if (item.Type === "simple" || item.Type === "variable") {
+          item["Categories"] = props.product?.name || "";
+        }
+      });
+
+      productCount.value = csvData.value.filter(
+        (item) => item.Type === "simple" || item.Type === "variable",
+      ).length;
+    } catch (error) {
+      message.value = `Error parsing CSV: ${error}`;
+      isSnackbarVisible.value = true;
+      messageType.value = "error";
+    }
+  },
+);
 
 watch(
   () => props.isDrawerOpen,
