@@ -20,7 +20,7 @@ const props = defineProps<Props>();
 const emit = defineEmits<Emit>();
 const loading: Ref<boolean> = ref(false);
 const random = ref<boolean>(true);
-const keepDescription = ref<boolean>(false);
+const keepDescription = ref<boolean>(true);
 const changePrice = ref<boolean>(false);
 const newPrice = ref<number>(0);
 const quantity = ref<string>("20");
@@ -343,7 +343,7 @@ watch(
               <VCol cols="12">
                 <VSelect
                   density="compact"
-                  label="Remove Description"
+                  label="Keep Description"
                   v-model="keepDescription"
                   :items="booleanOptions"
                   item-title="title"
