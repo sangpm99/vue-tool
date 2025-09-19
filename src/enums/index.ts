@@ -59,6 +59,11 @@ export const products: Product[] = [
     image: "/products/humanCustom/baseballCap.webp",
   },
   {
+    name: "Beach Short",
+    url: "/products/custom/Beach Short.csv",
+    image: "/products/custom/beach-short.webp",
+  },
+  {
     name: "Bedding Set",
     url: "/products/humanCustom/beddingSet.csv",
     image: "/products/humanCustom/beddingSet.webp",
@@ -149,6 +154,11 @@ export const products: Product[] = [
     image: "/products/humanCustom/pillow.webp",
   },
   {
+    name: "Polo Shirt",
+    url: "/products/custom/Polo Shirt.csv",
+    image: "/products/custom/polo-shirt.webp",
+  },
+  {
     name: "Poster",
     url: "/products/humanCustom/poster.csv",
     image: "/products/humanCustom/poster.webp",
@@ -172,6 +182,16 @@ export const products: Product[] = [
     name: "Sweat Shirt",
     url: "/products/humanCustom/sweatShirt.csv",
     image: "/products/humanCustom/sweatShirt.webp",
+  },
+  {
+    name: "Sweat Shirt 2",
+    url: "/products/custom/Sweatshirt2.csv",
+    image: "/products/humanCustom/sweatShirt.webp",
+  },
+  {
+    name: "T Shirt",
+    url: "/products/custom/T-Shirt.csv",
+    image: "/products/humanCustom/shirt2.webp",
   },
   {
     name: "Tote Bag",
