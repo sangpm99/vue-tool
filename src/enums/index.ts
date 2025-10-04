@@ -168,34 +168,44 @@ export const products: Product[] = [
     url: "/products/custom/Shoes.csv",
     image: "/products/custom/Shoes.jpg",
   },
+  // {
+  //   name: "Shirt 1",
+  //   url: "/products/humanCustom/shirt1.csv",
+  //   image: "/products/humanCustom/shirt1.webp",
+  // },
+  // {
+  //   name: "Shirt 2",
+  //   url: "/products/humanCustom/shirt2.csv",
+  //   image: "/products/humanCustom/shirt2.webp",
+  // },
+  // {
+  //   name: "Sweater",
+  //   url: "/products/humanCustom/sweater.csv",
+  //   image: "/products/humanCustom/sweater.webp",
+  // },
+  // {
+  //   name: "Sweatshirt",
+  //   url: "/products/humanCustom/sweatShirt.csv",
+  //   image: "/products/humanCustom/sweatShirt.webp",
+  // },
+  // {
+  //   name: "Sweatshirt 2",
+  //   url: "/products/custom/Sweatshirt2.csv",
+  //   image: "/products/humanCustom/sweatShirt.webp",
+  // },
   {
-    name: "Shirt 1",
-    url: "/products/humanCustom/shirt1.csv",
-    image: "/products/humanCustom/shirt1.webp",
-  },
-  {
-    name: "Shirt 2",
-    url: "/products/humanCustom/shirt2.csv",
-    image: "/products/humanCustom/shirt2.webp",
-  },
-  {
-    name: "Sweater",
-    url: "/products/humanCustom/sweater.csv",
-    image: "/products/humanCustom/sweater.webp",
-  },
-  {
-    name: "Sweat Shirt",
-    url: "/products/humanCustom/sweatShirt.csv",
+    name: "Sweatshirt 3",
+    url: "/products/custom/Sweatshirt3.csv",
     image: "/products/humanCustom/sweatShirt.webp",
   },
+  // {
+  //   name: "T Shirt",
+  //   url: "/products/custom/T-Shirt.csv",
+  //   image: "/products/humanCustom/shirt2.webp",
+  // },
   {
-    name: "Sweat Shirt 2",
-    url: "/products/custom/Sweatshirt2.csv",
-    image: "/products/humanCustom/sweatShirt.webp",
-  },
-  {
-    name: "T Shirt",
-    url: "/products/custom/T-Shirt.csv",
+    name: "T-Shirt 2",
+    url: "/products/custom/T-Shirt-2.csv",
     image: "/products/humanCustom/shirt2.webp",
   },
   {
