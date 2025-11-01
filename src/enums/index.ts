@@ -224,6 +224,11 @@ export const products: Product[] = [
     image: "/products/humanCustom/tumbler.webp",
   },
   {
+    name: "Watch",
+    url: "/products/custom/Watch.csv",
+    image: "/products/custom/Watch.jpg",
+  },
+  {
     name: "Wood Sign",
     url: "/products/humanCustom/woodSign.csv",
     image: "/products/humanCustom/woodSign.webp",
