@@ -234,3 +234,41 @@ export const products: Product[] = [
     image: "/products/humanCustom/woodSign.webp",
   },
 ];
+
+export const product2s: Product[] = [
+  {
+    name: "Shoes",
+    url: "/product2s/Shoes.csv",
+    image: "/product2s/Shoes.png",
+  },
+  {
+    name: "T-shirt",
+    url: "/product2s/T-shirt.csv",
+    image: "/product2s/T-shirt.png",
+  },
+  {
+    name: "Shirt",
+    url: "/product2s/Shirt.csv",
+    image: "/product2s/Shirt.png",
+  },
+  {
+    name: "Shirt-2",
+    url: "/product2s/Shirt-2.csv",
+    image: "/product2s/Shirt-2.png",
+  },
+  {
+    name: "Pants",
+    url: "/product2s/Pants.csv",
+    image: "/product2s/Pants.png",
+  },
+  {
+    name: "Shorts",
+    url: "/product2s/Shorts.csv",
+    image: "/product2s/Shorts.png",
+  },
+  {
+    name: "Sweatshirt",
+    url: "/product2s/Sweatshirt.csv",
+    image: "/product2s/Sweatshirt.png",
+  },
+];
