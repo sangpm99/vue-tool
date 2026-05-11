@@ -233,11 +233,6 @@ export const products: Product[] = [
     url: "/products/humanCustom/woodSign.csv",
     image: "/products/humanCustom/woodSign.webp",
   },
-  {
-    name: "Vase",
-    url: "/products/custom/Vase.csv",
-    image: "/products/custom/Vase.webp",
-  },
 ];
 
 export const product2s: Product[] = [
@@ -275,5 +270,10 @@ export const product2s: Product[] = [
     name: "Sweatshirt",
     url: "/product2s/Sweatshirt.csv",
     image: "/product2s/Sweatshirt.png",
+  },
+    {
+    name: "Vase",
+    url: "/products/custom/Vase.csv",
+    image: "/products/custom/Vase.webp",
   },
 ];
